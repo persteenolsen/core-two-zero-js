@@ -7,6 +7,10 @@
 *.userosscache
 *.sln.docstates
 
+Startup.cs
+Test.cs
+PublishProfiles/
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
