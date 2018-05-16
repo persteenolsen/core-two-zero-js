@@ -1,0 +1,306 @@
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    .col-xs-12 {
+        padding-top: 10px;
+    }
+
+
+        .col-xs-12 > input {
+            width: 100%;
+        }
+
+
+
+    .btn {
+        min-width: 150px;
+    }
+
+
+    .btn-block {
+        width: 100%;
+    }
+
+
+    input[type=text] {
+        padding-top: 2px;
+        border-radius: 5px;
+        border: 1px ridge black;
+    }
+
+
+    select {
+        color: white;
+        min-height: 30px;
+        width: 100%;
+        background-color: rgb(51, 122, 183);
+    }
+</style>
+
+
+
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+
+<script>
+
+    
+
+      // Funktionen kaldes når DOM er loadet, og fylder DropDownListen op med personernes navne via kaldet GetAllPersonsDropDownList();
+      $( document ).ready(function() {
+
+          GetAllPersonsDropDownList();
+
+      })
+
+</script>
+
+
+<h3>Show persons by calling an ASP.NET Core Web API using jQuery</h3>
+<div class="row">
+
+
+    <!--Venstre/første del starter-->
+    <div class="col-xs-12 col-sm-8 col-md-8">
+
+        <!--Nested grid til 2 kolonner/1 kolonne vedr. tekst/input-felt-->
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                Select a person:<br />
+
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                <select id="ListPersonsId" size="1"></select>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                Id:
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                <input readonly type="text" id="txtPutPostId" />
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                Name:
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                <input type="text" id="txtaddNavn" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                Last Name:
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                <input type="text" id="txtaddEfternavn" />
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                Age:
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                <input type="text" id="txtaddAlder" />
+            </div>
+
+        </div>
+
+
+        <!--Nested 1 kolonne vedr de 4 knapper-->
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                <button class="btn btn-block" onclick="alert('Only an Administrator can edit a person');">Edit Person</button>
+            </div>
+
+
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                <button class="btn btn-block" onclick="alert('Only an Administrator can delete a person');">Delete Person</button>
+            </div>
+
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                <button class="btn btn-block btn-success" onclick="ClearPerson();return false;">Clear</button>
+            </div>
+
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                <button class="btn btn-block" onclick="alert('Only an Administrator can add a person');">Add Person</button>
+            </div>
+        </div>
+
+
+        <!--Venstre/øverste slutter-->
+    </div>
+
+
+    <!--Højre/nederste kolonne starter-->
+    <div class="col-xs-12 col-sm-4 col-md-4">
+
+        <button class="btn btn-block btn-primary" onclick="GetAllPersons();return false;">Show all Persons</button>
+
+        <br /><br />
+
+        <!--Denne div indeholder alle personers data der kan hentes vi api-kald-->
+        <div id="divResult"></div>
+
+        <!--Højre/nederste kolonne slutter-->
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+
+               // DropDownListen fyldes med alle personernes fornavn og efternavn, og Id som value
+               function GetAllPersonsDropDownList() {
+
+                   //jQuery.support.cors = true;
+                   // $("#divResult").show();
+
+                   $.ajax({
+                       url: 'api/PersonTableCoreTwoJSApi',
+                       type: 'GET',
+                       dataType: 'json',
+                       //dataType: 'xml',
+                       success: function (data) {
+
+                           $.each(data, function (index, data) {
+
+                               $('#ListPersonsId').append($('<option></option>').val(data.id).html(data.firstName + " " + data.lastName));
+
+                           });
+
+                       },
+                       error: function (x, y, z) {
+                           alert(x + '\n' + y + '\n' + z);
+                       }
+                   });
+               }
+
+
+
+               // Koden kaldes når der vælges en person fra DropDownListen og person input-felterne udfyldes via api kald gennem funtionen GetPerson via valgt Person Id
+               $('#ListPersonsId').change(function () {
+
+                   var selectedvalS = $('#ListPersonsId option:selected').val();
+                   //$('#txtId').val(selectedvalS);
+
+                   GetPerson(selectedvalS);
+
+                   //alert("The selected value: " + selectedvalS);
+
+               }
+              );
+
+
+
+               // Funktionen viser alle personer via api kald
+               function GetAllPersons() {
+                   //jQuery.support.cors = true;
+                   // $("#divResult").show();
+
+
+                   $.ajax({
+                       url: 'api/PersonTableCoreTwoJSApi',
+                       type: 'GET',
+                       dataType: 'json',
+                       //dataType: 'xml',
+                       success: function (data) {
+
+                           WriteResponse(data);
+                       },
+                       error: function (x, y, z) {
+                           alert(x + '\n' + y + '\n' + z);
+                       }
+                   });
+               }
+
+
+
+               // Funktionen udfylder inputfelterne fra den person der blev valgt fra DropDownListen via api-kald
+               function GetPerson(id) {
+
+                   //jQuery.support.cors = true;
+                   //var id = $('#txtId').val();
+
+                   $.ajax({
+                       url: 'api/PersonTableCoreTwoJSApi/' + id,
+                       type: 'GET',
+                       dataType: 'json',
+                       success: function (data) {
+                           ShowPerson(data);
+                       },
+                       error: function (x, y, z) {
+                           alert(x + '\n' + y + '\n' + z);
+                       }
+                   });
+               }
+
+
+               // Her skabes der en tabel med alle personerne via api kald
+               function WriteResponse(persons) {
+
+
+                   var strResult = "<table style='width:100%'><tr><td colspan='4'>&nbsp;</td></tr>";
+                   strResult += "<tr><td>ID</td><td>Name</td><td>Last Name</td><td>Age</td></tr>";
+
+
+                   $.each(persons, function (index, person) {
+
+                       strResult += "<tr><td>" + person.id + "</td><td>" + person.firstName + "</td><td>" + person.lastName + "</td><td>" + person.age + "</td></tr>";
+
+
+                   });
+                   strResult += "</table>";
+                   $("#divResult").html(strResult);
+
+               }
+
+
+
+               // Funktioen kaldes fra GetPerson, der igen kaldes når der vælges en person fra DropDownListen af personer
+               function ShowPerson(person) {
+                   if (person != null) {
+
+
+                       $('#txtPutPostId').val(person.id);
+                       $('#txtaddNavn').val(person.firstName);
+                       $('#txtaddEfternavn').val(person.lastName);
+                       $('#txtaddAlder').val(person.age);
+                   }
+                   else {
+                       $("#divResult").html("No Results To Display");
+                   }
+               }
+
+
+               // Ved tryp på knappen Clear, ryddes alle felter samt listen med personer.
+               function ClearPerson() {
+
+                   // Da Clearperson funktionen kun kaldes ved Slet og Opret, giver det mening at fjerne ID - Find person
+                   //$('#txtId').val("");
+
+                   $("#divResult").html("");
+
+                   $('#txtPutPostId').val("");
+                   $('#txtaddNavn').val("");
+                   $('#txtaddEfternavn').val("");
+                   $('#txtaddAlder').val("");
+
+               }
+
+
+
+</script>
