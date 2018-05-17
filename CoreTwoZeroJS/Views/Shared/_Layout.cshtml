@@ -28,6 +28,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+
+                <!--This is just a shortcut to the Home Index-->
                 <!--<a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">CoreTwoZeroJS</a>-->
             </div>
             <div class="navbar-collapse collapse">
@@ -38,15 +40,13 @@
 
                     <li><a asp-area="" asp-controller="AngularAPI" asp-action="Index">Show persons API / Angular</a></li>
                     <li><a asp-area="" asp-controller="Persons" asp-action="Index">Show persons API / jQuery</a></li>
+                    <li><a asp-area="" asp-controller="AdminPersons" asp-action="Index">Manage persons API / jQuery</a>
 
-                    <li>
-                        <a asp-area="" asp-controller="AdminPersons" asp-action="Index">Manage persons API / jQuery</a>
-
-
-                        <!--<li><a asp-area="" asp-controller="SuperAdminPersons" asp-action="Index">Administrate persons</a>-->
-                        <!--<li><a asp-area="" asp-controller="SuperAdminPersons" asp-action="Index">Administrate persons</a>-->
-                        
-                       <!--<li><a asp-area="" asp-controller="PersonTableCoreTwoJS" asp-action="Index">Show and manage persons</a></li>-->
+                     <!--This is a links to an API where jQuery are used to manage if persons are Editable or not-->
+                     <!--<li><a asp-area="" asp-controller="SuperAdminPersons" asp-action="Index">Administrate persons</a>-->
+                                           
+                     <!--This is a link to a MVC SPA Application using Model, View and Controllers to show and manage persons - I use for testing only-->
+                     <!--<li><a asp-area="" asp-controller="PersonTableCoreTwoJS" asp-action="Index">Show and manage persons</a></li>-->
 
                 </ul>
             </div>
