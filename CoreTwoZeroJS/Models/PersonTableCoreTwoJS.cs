@@ -15,5 +15,8 @@ namespace CoreTwoZeroJS.Models
         public string Email { get; set; }
         public string Age { get; set; }
         public string Editable { get; set; }
+
+        // Add this Class member to the Model to match the new Column in the MS SQL BD
+        public string Profession { get; set; }
     }
 }

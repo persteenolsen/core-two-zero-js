@@ -11,10 +11,8 @@ namespace CoreTwoZeroJS.Controllers
 {
     public class PersonTableCoreTwoJSController : Controller
     {
-        
         private readonly MydbContext _context;
 
-       
         public PersonTableCoreTwoJSController(MydbContext context)
         {
             _context = context;
@@ -55,7 +53,7 @@ namespace CoreTwoZeroJS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Phone,Email,Age,Editable")] PersonTableCoreTwoJS personTableCoreTwoJS)
+        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Phone,Email,Age,Editable,Profession")] PersonTableCoreTwoJS personTableCoreTwoJS)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +85,7 @@ namespace CoreTwoZeroJS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Phone,Email,Age,Editable")] PersonTableCoreTwoJS personTableCoreTwoJS)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Phone,Email,Age,Editable,Profession")] PersonTableCoreTwoJS personTableCoreTwoJS)
         {
             if (id != personTableCoreTwoJS.Id)
             {

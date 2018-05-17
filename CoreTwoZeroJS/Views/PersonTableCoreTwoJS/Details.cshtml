@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Details</h2>
@@ -45,6 +46,12 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Editable)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Profession)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Profession)
         </dd>
     </dl>
 </div>
