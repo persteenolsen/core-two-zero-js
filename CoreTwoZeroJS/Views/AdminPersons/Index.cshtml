@@ -129,6 +129,18 @@
 
         </div>
 
+        <!--Profession added here to Display the NEW DB column-->
+
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                Profession:
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                <input type="text" id="txtaddProfession" />
+            </div>
+
+        </div>
 
         <!--Nested 1 kolonne vedr de 4 knapper-->
         <div class="row">
@@ -276,7 +288,10 @@
                        firstName: $('#txtaddNavn').val(),
                        lastName: $('#txtaddEfternavn').val(),
                        age: $('#txtaddAlder').val(),
-                       editable: "Yes"
+                       editable: "Yes",
+
+                       // Profession is added to match the DB column
+                       profession: $('#txtaddProfession').val()
                    };
 
 
@@ -323,7 +338,11 @@
                            firstName: $('#txtaddNavn').val(),
                            lastName: $('#txtaddEfternavn').val(),
                            age: $('#txtaddAlder').val(),
-                           editable: "Yes"
+                           editable: "Yes",
+
+
+                           // Profession is added to match the DB column
+                           profession: $('#txtaddProfession').val()
                        };
 
 
@@ -397,14 +416,14 @@
                // Her skabes der en tabel med alle personerne via api kald
                function WriteResponse(persons) {
 
-
+                   // Profession added to display the new DB Column
                    var strResult = "<table style='width:100%'>";
-                   strResult += "<tr><td>ID</td><td>Name</td><td>Last Name</td><td>Age</td><td>Is Editable</td></tr>";
+                   strResult += "<tr><td>ID</td><td>Name</td><td>Last Name</td><td>Age</td><td>Is Editable</td><td>Profession</td></tr>";
 
 
                    $.each(persons, function (index, person) {
 
-                       strResult += "<tr><td>" + person.id + "</td><td>" + person.firstName + "</td><td>" + person.lastName + "</td><td>" + person.age + "</td><td>" + person.editable + "</td></tr>";
+                       strResult += "<tr><td>" + person.id + "</td><td>" + person.firstName + "</td><td>" + person.lastName + "</td><td>" + person.age + "</td><td>" + person.editable + "</td><td>" + person.profession + "</td></tr>";
 
 
                    });
@@ -425,6 +444,10 @@
                        $('#txtaddEfternavn').val(person.lastName);
                        $('#txtaddAlder').val(person.age);
                        $('#txtaddEditable').val(person.editable);
+
+
+                   // Profession adden to match the DB Column
+                       $('#txtaddEditable').val(person.profession);
                    }
                    else {
                        $("#divResult").html("No Results To Display");
@@ -445,6 +468,9 @@
                    $('#txtaddEfternavn').val("");
                    $('#txtaddAlder').val("");
                    $('#txtaddEditable').val("");
+
+                   // Profession adden to match the DB Column
+                   $('#txtaddProfession').val("");
 
                }
 
