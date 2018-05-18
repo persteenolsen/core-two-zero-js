@@ -28,25 +28,31 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+
+                <!--This is just a shortcut to the Home Index-->
                 <!--<a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">CoreTwoZeroJS</a>-->
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+
+
                     <!--<li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>-->
 
-                    <li><a asp-area="" asp-controller="AngularAPI" asp-action="Index">Show persons API / Angular</a></li>
+                    <!--I want the jQuery first, because the Angular part is not all finish-->
                     <li><a asp-area="" asp-controller="Persons" asp-action="Index">Show persons API / jQuery</a></li>
 
-                    <li>
-                        <a asp-area="" asp-controller="AdminPersons" asp-action="Index">Manage persons API / jQuery</a>
+                    <li><a asp-area="" asp-controller="AngularAPI" asp-action="Index">Show persons API / Angular</a></li>
+                    <li><a asp-area="" asp-controller="AdminPersons" asp-action="Index">Manage persons API / jQuery</a>
 
+                        <!--Fix the menu to more a logical structure-->
+                        <!--They should be at the end of the meny-->
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">About this application</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">About ASP.NET Core</a></li>
 
-                        <!--<li><a asp-area="" asp-controller="SuperAdminPersons" asp-action="Index">Administrate persons</a>-->
-                        <!--<li><a asp-area="" asp-controller="SuperAdminPersons" asp-action="Index">Administrate persons</a>-->
-                        
-                       <!--<li><a asp-area="" asp-controller="PersonTableCoreTwoJS" asp-action="Index">Show and manage persons</a></li>-->
+                    <!--This is a links to an API where jQuery are used to manage if persons are Editable or not-->
+                    <!--<li><a asp-area="" asp-controller="SuperAdminPersons" asp-action="Index">Administrate persons</a>-->
+                    <!--This is a link to a MVC SPA Application using Model, View and Controllers to show and manage persons - I use for testing only-->
+                    <!--<li><a asp-area="" asp-controller="PersonTableCoreTwoJS" asp-action="Index">Show and manage persons</a></li>-->
 
                 </ul>
             </div>
