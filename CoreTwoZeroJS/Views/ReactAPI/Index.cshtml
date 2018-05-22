@@ -8,7 +8,7 @@
 
 <div id="root"></div>
 
-<div id="abc"></div>
+<div id="rootapi"></div>
 
 
 
@@ -24,9 +24,15 @@
     class Greeting extends React.Component {
     render() {
     return (
-    <p>Hello world from React by Babel Standalone...</p>);
+    <p>Hello world from ReactJS - trying to get the persons as API data...</p>);
+    }
+
+    componentDidMount(){
+
     }
     }
+
+
     ReactDOM.render(
     <Greeting />,
     document.getElementById('root')
@@ -36,5 +42,53 @@
 </script>
 
 
+<script type="text/babel" data-presets="es2015, react, stage-2">
+
+    class GetPersons extends React.Component {
+
+    constructor(props) {
+
+    super(props)
+
+    this.state = {
+    persons: []
+
+    };
+
+    }
+
+    componentDidMount(){
+
+     fetch('http://persons.api.core.persteenolsen.com/api/PersonTableCoreTwoJSApi/')
+    .then(response => response.json())
+    .then(data => { this.setState({ persons: data }) })
+
+     //.catch(error => console.log('error fetching', error))
+
+    // This is for testing and represents the json-data I should get by fech
+    //this.setState( { persons: [{"id":1,"firstName":"Hans","lastName":"Hansen","phone":"22334455","email":"aaaa@bbb.dk","age":"48","editable":"No","profession":"Sales Man"},{"id":2,"firstName":"Per","lastName":"Olsen","phone":"33445566","email":"per@olsen.dk","age":"50","editable":"No","profession":"Web Developer"},{"id":4,"firstName":"Ib","lastName":"Ibsen","phone":"11887766","email":"ib@ibsen","age":"33","editable":"Yes","profession":"Fischerman"},{"id":8,"firstName":"Ole","lastName":"Olsen","phone":null,"email":null,"age":"46","editable":"Yes","profession":"Pilot"},{"id":10,"firstName":"Lars","lastName":"Petersen","phone":null,"email":null,"age":"33","editable":"Yes","profession":"Teacher"}] });
 
 
+    }
+
+
+    render(){
+
+    return (
+    <div>
+        {this.state.persons.map(person =>
+        <div key={person.id}> {person.firstName} {person.lastName} {person.age} {person.profession} </div>)}
+    </div>
+    );
+    }
+
+
+    }
+
+
+    ReactDOM.render(
+    <GetPersons />,
+    document.getElementById('rootapi')
+    );
+
+</script>
