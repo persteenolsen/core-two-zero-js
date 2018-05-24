@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace CoreTwoZeroJS.Models
 {
+    // This model are used by the controllers to manage the data to and from the Views using get and set methods
     public class PersonTableCoreTwoJS
     {
 
