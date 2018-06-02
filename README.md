@@ -1,7 +1,7 @@
 This application is an ASP.NET Core 2.0 application using an MS SQL Database to store the data of persons, and using the MVC pattern 
 to seperate the applacation code in models, Vievs and controllers.
 
-The application is used for demostrate some of my skills as a Full Stack Developer and I did chose to use GIT and GitHub to get experience
+The application is made for demonstrate some of my skills as a Full Stack Developer and I did chose to use GIT and GitHub to get experience
 with these greats tools.
 
 1) Models
