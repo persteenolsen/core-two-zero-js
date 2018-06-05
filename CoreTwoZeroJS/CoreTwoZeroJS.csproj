@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\js\reactfile.jsx" />
+    <None Include="wwwroot\js\react\reactfile.jsx" />
   </ItemGroup>
 
 </Project>
