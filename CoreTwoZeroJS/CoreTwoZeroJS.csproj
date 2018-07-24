@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\favicon.ico" />
-    <Content Remove="wwwroot\index.html" />
+    <Content Remove="wwwroot\index_react.html" />
     <Content Remove="wwwroot\js\reactfile.jsx" />
     <Content Remove="wwwroot\static\css\main.c17080f1.css" />
     <Content Remove="wwwroot\static\css\main.c17080f1.css.map" />
@@ -30,7 +30,7 @@
 
   <ItemGroup>
     <None Include="wwwroot\favicon.ico" />
-    <None Include="wwwroot\index.html" />
+    <None Include="wwwroot\index_react.html" />
     <None Include="wwwroot\js\react\reactfile.jsx" />
     <None Include="wwwroot\static\css\main.c17080f1.css" />
     <None Include="wwwroot\static\css\main.c17080f1.css.map" />

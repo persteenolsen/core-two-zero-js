@@ -6,18 +6,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
+
+
+<h3>AngularJS 1 GET persons API</h3>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 
 <div ng-app="myApp" ng-controller="myController">
 
-    <br />
+    
     <br />
     Angular testing: 2 + 3 = {{2+3}}
     <br />
     <br />
-    Consuming a Web Api by Angular 1.0
+    Consuming a Web Api by AngularJS 1
     <br />
     <br />
 
@@ -41,7 +45,7 @@
 <script>
     var app = angular.module('myApp', []);
     app.controller('myController', function ($scope, $http) {
-               
+
         $http.get("api/PersonTableCoreTwoJSApi")
             .then(function (response) { $scope.persons = response.data });
     });
