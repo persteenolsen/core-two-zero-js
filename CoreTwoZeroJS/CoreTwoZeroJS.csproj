@@ -31,7 +31,7 @@
   <ItemGroup>
     <None Include="wwwroot\favicon.ico" />
     <None Include="wwwroot\index_react.html" />
-    <None Include="wwwroot\js\react\reactfile.jsx" />
+    <None Include="wwwroot\js\react\hellowworldreact.jsx" />
     <None Include="wwwroot\static\css\main.c17080f1.css" />
     <None Include="wwwroot\static\css\main.c17080f1.css.map" />
     <None Include="wwwroot\static\js\main.66f92b5f.js" />
