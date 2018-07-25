@@ -24,3 +24,7 @@ The controller "PersonTableCoreTwoJSController" and the matching View in the Vie
 CRUD operations to the Database but are using Razor and MVC, and are not Web API Clients.
 Note: I only did use these Views and Controllers for testing everything was ready to make Web API Calls, and therefor I dont have
 have a link in the menu to these Controllers.
+
+In VersionFourZero I have added a demo of the React toolchain known as Create React App allowing you to work at the React components, save and see the es5 output result in the browser as it will reload seconds after you save.
+
+I have also added an Angular 6 demo made by the tool Angular CLI and here an es5 output bundle are created and ready for production as well as the React (es5 bundle). 
